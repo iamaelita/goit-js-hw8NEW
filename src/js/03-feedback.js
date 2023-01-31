@@ -9,17 +9,17 @@ updateForm();
 formEl.addEventListener('input', throttle(onFormInput, 500));
 formEl.addEventListener('submit', onFormSubmit);
 
-function onFormInput(event) {
-  formData[event.target.name] = event.target.value;
+function onFormInput(e) {
+  formData[e.target.name] = e.target.value;
   localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
   console.log(formData);
 }
 
-function onFormSubmit(event) {
-  event.preventDefault();
+function onFormSubmit(e) {
+  e.preventDefault();
   const {
     elements: { email, message },
-  } = event.target;
+  } = e.target;
 
   if (email.value === '' || message.value === '') {
     return window.alert('Please fill in all the fields!');
