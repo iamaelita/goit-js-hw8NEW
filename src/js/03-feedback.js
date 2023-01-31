@@ -1,11 +1,18 @@
+
+// підключаємо бібліотеку
 import throttle from 'lodash.throttle';
+
+
 const formEl = document.querySelector('.feedback-form');
 console.log(formEl);
 const STORAGE_KEY = 'feedback-form-state';
 const formData = {};
 
+//перевіряємо стан сховища при завантаженні сторінки
 updateForm();
 
+
+//відстежуємо події інпут та сабміт
 formEl.addEventListener('input', throttle(onFormInput, 500));
 formEl.addEventListener('submit', onFormSubmit);
 
@@ -22,7 +29,7 @@ function onFormSubmit(e) {
   } = e.target;
 
   if (email.value === '' || message.value === '') {
-    return window.alert('Please fill in all the fields!');
+    return window.alert('Будь ласка, заповніть необхідні поля форми');
   }
   console.log({ Email: email.value, Message: message.value });
   formEl.reset();
